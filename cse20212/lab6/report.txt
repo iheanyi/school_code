@@ -1,0 +1,20 @@
+					  Report for Lab 6 by Iheanyi Ekechukwu
+					  
+For this lab, the user merely has to make a text file of a 9x9 grid of numbers separated by a space, then type main "file.txt"
+into the Terminal window and let the solver run. The solver will only run for easy difficulty/medium difficulty problems,
+nothing harder than that. Internally, the program works by initializing the PuzzleVector object with all the values from
+the text files. Then, the program goes through the PuzzleVector object, looking at each space if there is a number there,
+the program lops through the vector PossNum, a three dimensional vector, from [j][i][PuzzleVector[j][i]], setting all of
+the spaces in those rows and columns equal to zero, meaning that they are unable to be placed down in the future. Afterwards,
+the program loops through each 3x3 subgrid, checking to see if there is a single possible value in the subgrid, and if there
+is it inserts it into the grid. After which, the program loops through every space and sees if there is only one possible
+number to be used on the board, and if there is, it places that number on the board. The program runs until the board is
+filled, thus solving the Sudoku puzzle. The output of the program was verified as correct by checking each row and column,
+comparing it to it's subgrids and making sure that no values are repeated, which were correct for both the easy and medium
+puzzles.
+
+I feel that the easy puzzle solver worked well, along with the medium puzzle solver. Everything worked as expected, but it 
+took awhile to think through the logic required in order to make the program, especially when it came to the subgrids. The
+program still does not work on any problems harder than medium, but that is not required for this lab so that is not a
+problem. The details of how the program works are described above in pretty good detail, so just re-read the internal
+working of the program in order to understand how the program works.

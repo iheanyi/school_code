@@ -1,0 +1,11 @@
+					    Report for Lab 5 by Iheanyi Ekechukwu
+
+From the user's perspective, once the program is started, instructions for playing the game are given in a simple format
+in a welcome message. After the welcome message is displayed, the user can begin playing the game as long as the follow
+the instructions given to them in the welcome message.The program is structured to be as user friendly as possible, only
+requiring the user to enter two numbers per turn and as long as the move is valid (following all the given rules of Othello),
+then the user should not have any problems playing the game. Internally, the program is composed of seven different functions,
+each of which do the following: print the starting pieces, print the board after a move is made, check if a move is valid,
+decide which player's turn it is, flip pieces based on the move made, and determine who won the game after the game
+is over. I verified that the output of the program is correct by playing multiple games and differing the BOARD_SIZE variable
+and changing the winner/loser. From the games that I played, the program seemed to work correctly and no errors were found.

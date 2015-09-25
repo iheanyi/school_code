@@ -1,0 +1,7 @@
+					  Report for Lab 2
+
+Once again, I did not finish the lab for this week. I have found myself struggling with the labs, even when I go to the
+office hours for help, but I am working on them faster nowadays. Anyways, in this lab, we mainly worked on overloading
+the various functions in the Rational calculator and the Connect 4 lab, which makes it eaier for static memory management. 
+I do not understand the benefits of overloading completely yet, and plus I still have to finish this lab later on in the future
+Hopefully it becomes clearer in the future and sorry for being unable to complete the assignment.

@@ -1,0 +1,47 @@
+/* CardDeck.h
+
+Header file for CardDeck.h
+
+Coded by Iheanyi Ekechukwu */
+
+#include <iostream>
+#include <algorithm>
+#include <ctime>
+#include <deque>
+#include <iterator>
+#include <cstdlib>
+#ifndef CARDDECK_H
+#define CARDDECK_H
+#define CLUB 0
+#define HEART 1
+#define SPADE 2
+#define DIAMOND 3
+using namespace std;
+
+class CardDeck {
+  public:
+    CardDeck(int);
+    CardDeck();
+    int getSize();
+    void shuffle();
+    void printDeck() const;
+    int inOrder();
+    int Deal();
+    int DealStock();
+    void convertDeck();
+    void play();
+    void printBoard();
+    void solve();
+    int determineSuit(int);
+  private:
+    int size;
+    deque<int> myDeck;
+    //deque < deque<int> > Piles;
+    deque < deque<int> > Visible;
+    deque < deque<int> > Invisible;
+    deque<int> Stock;
+    deque<int> Discard;
+    deque <deque <int> > Suits;
+    int suit;
+};
+#endif

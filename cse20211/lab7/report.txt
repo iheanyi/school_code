@@ -1,0 +1,12 @@
+						  Report for Lab 7
+From the user's perspective, this program works relatively simply. By using the predefined UNIX command with the syntax of
+"./life < scene#.life", the user can change the scene of the program, with each scene corresponding to something different.
+Scene 1 consists of still life objects, Scene 2 oscillating objects (blinking objects, Scene 3 consist of moving objects
+(which eventually either die down, become still, or oscillators), Scene 4 consists of an explosion of activity before 
+stabilizing into still life, and Scene 5 consists of a hectic display of activity that takes a long time to die down.
+Internally, the program works by applying the rules of life by the basic use of functions. There is a function to add life,
+a function to remove life, a function to count the number of live neighbors any given space has,a function to switch the data
+between the current world state and the next generation and a function to apply the rules of life to the next generation.
+Depending on which letter the user inputs to the first statement, the program either quits, adds life, removes life, moves to
+the next generation, or plays the game indefinitely. I verified the output of the program was correct by observing the output
+and the rules of life were applied correctly regardless of the inputs to the program.

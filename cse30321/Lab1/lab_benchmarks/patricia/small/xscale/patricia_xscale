@@ -1,0 +1,1 @@
+sim-outorder -config xscale.cfg /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/patricia/patricia.arm /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/patricia/small.udp

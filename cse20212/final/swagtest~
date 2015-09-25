@@ -1,0 +1,2 @@
+//The music that will be played
+Mix_Music *music = NULL;

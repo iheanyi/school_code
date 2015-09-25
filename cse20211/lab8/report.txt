@@ -1,0 +1,20 @@
+						Report for Lab 8 by Iheanyi Ekechukwu
+
+This week we made a word-guessing game, basically the concept of hangman without the graphics portion of the game. From the
+user's perspective, the program works by these simple rules. The user is allowed 10 guesses to guess the secret word correctly,
+if not, the game ends. Other conditions for the program to end are if the user correctly guesses the word or all the letters
+of the word. After every game ends, the user is prompted to play again and if they respond "no", then the program ends but if
+they respond "yes" or do not prompt the program to end, it will play another round regardless. Internally, the program works
+by randomly selecting a word from the built in library of 16 words, all having various lengths. After said word is chosen, an
+array of stars corresponding to the length of the secret word is created to set up the initial conditions of the game. After
+all starting conditions have been set, the main gameplay loop begins, leading to the program running for 10 turns or until
+the word has been guessed correctly. Invalid guesses are all guesses that do not include alphabetic numbers, these guesses
+will not take away from the number of guesses since they are invalid and the user is just reprompted to guess a word or letter
+until they guess a valid letter. With each valid input, the program detracts one guess. After the game ends, with the word
+correctly being guessed or running out of turns, the program will end and display a message dependent on whether the user
+won or lost and then go into a function to ask the user to play again. If the user responds no, the program ends but otherwise,
+the program resets everything and chooses a new  word before starting the main gameplay loop all over again. I verified the
+output is correct by testing the boundaries of the program specified in the lab document and from the testing on my end, I
+did not run into any bugs from the program whatsoever. Just to double check for potential bugs, I also compiled using the -Wall
+commmand, which did not return any compiler warnings. With the program running correctly and the compiler not returning any
+warnings, I believe that the program has 100% correct output.

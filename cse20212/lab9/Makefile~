@@ -1,0 +1,10 @@
+all: main
+
+main: main.o Distance.o
+	g++ main.o Distance.o -o main -g
+Distance.o:	Distance.cpp
+	  g++ -c Distance.cpp -g
+main.o:	main.cpp
+	g++ -c main.cpp -g
+clean:
+      rm -f *.o main

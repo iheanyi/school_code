@@ -1,0 +1,22 @@
+﻿Build started 3/27/2012 3:56:34 PM.
+     1>Project "H:\cse20212\lab9\Sudoku\Sudoku\Sudoku.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\Dictionary.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "Debug\Dictionary.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Dictionary.cpp
+         Dictionary.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\cse20212\lab9\Sudoku\Debug\Dictionary.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\Dictionary.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\cse20212\lab9\Sudoku\Debug\Dictionary.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\cse20212\lab9\Sudoku\Debug\Dictionary.lib" /MACHINE:X86 Debug\Dictionary.obj
+         Sudoku.vcxproj -> H:\cse20212\lab9\Sudoku\Debug\Dictionary.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"H:\cse20212\lab9\Sudoku\Debug\Dictionary.exe;#1" /manifest Debug\Dictionary.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Debug\Dictionary.unsuccessfulbuild".
+         Touching "Debug\Dictionary.lastbuildstate".
+     1>Done Building Project "H:\cse20212\lab9\Sudoku\Sudoku\Sudoku.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.43

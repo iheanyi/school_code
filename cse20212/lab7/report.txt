@@ -1,0 +1,13 @@
+				    Report for Lab 7 by Iheanyi Ekechukwu
+
+
+The elapsed time for my program to run was 60.32 seconds.
+
+Internally, the program works by using three nested for loops for three letter words, comparing
+each iteration to the surrounding letters and skipping over using "continue" if there are three
+letters in a row. The logic is the same for the seven letter words, only using seven nested for loops
+as well as having more cases into the if statement, comparing every three letters before the next 
+iteration. 
+
+I verified the program worked correctly by comparing my permutations to the ones that Professor Emrich
+posted on the website, which matched up with one another.

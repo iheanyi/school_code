@@ -1,0 +1,295 @@
+/* Heisman Trophy Predictor
+
+The objective of this program is to predict the Heisman Trophy winner based on the calculated amount of points
+on a formula we defined.
+
+Coded by Iheanyi Ekechukwu and Waleed Mohammed */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include <unistd.h>
+
+// Define constants
+#define MAX 1000
+#define SIZE 256
+#define QB_SIZE 177
+#define RB_SIZE 332
+#define WR_SIZE 689
+int total = QB_SIZE+RB_SIZE+WR_SIZE;
+
+// Quarter Back Structure
+struct qb {
+ char position[3];
+ char name_first[SIZE];
+ char name_last[SIZE];
+ char school[10];
+ int yds_pass; // Passing Yards
+ int tds_pass; // Passing touchdowns
+ int intercepts; // Interceptions
+ int yds_rush; // Rushing Yards
+ int tds_rush; // Rushing touchdowns
+ int wins;
+ int losses;
+ int ranked_wins;
+};
+
+// Running Back Structure
+struct rb {
+ char position[3];
+ char name_first[20];
+ char name_last[20];
+ char school[10];
+ int yds_rush;
+ int yds_rec;   // Receiving yards
+ int tds_rush;
+ int tds_rec;   // Receiving touchdowns
+ int wins;
+ int losses;
+ int ranked_wins;
+};
+
+// Wide Receiver Structure
+struct wr {
+ char position[3];
+ char name_first[MAX];
+ char name_last[MAX];
+ char school[10];
+ int yds_rush;
+ int yds_rec;
+ int tds_rush;
+ int tds_rec;
+ int wins;
+ int losses;
+ int ranked_wins;
+};
+
+//Scoring Structure
+struct sc {
+ int position;
+ int position_number;
+ int score;
+};
+
+// Function Prototypes
+void fill_array_qb(struct qb* quarterback);
+void fill_array_rb(struct rb* runningback);
+void fill_array_wr(struct wr* widereceiver);
+void calculate_score_qb(struct qb* quarterback, int* qb_score);
+void calculate_score_rb(struct rb* runningback, int* rb_score);
+void calculate_score_wr(struct wr* widereceiver, int* wr_score);
+void fill_array_scores_qb(struct sc* scores,int qb_score[QB_SIZE]);
+void fill_array_scores_rb(struct sc* scores, int rb_score[RB_SIZE]);
+void fill_array_scores_wr(struct sc* scores, int wr_score[WR_SIZE]);
+void sort_scores(struct sc* scores, int scoresinorder[total]);
+void print_winners(struct sc* score, struct qb* qback, struct rb* rback, struct wr* wreceiver, int scoresinorder[total]);
+void print_welcome();
+// Main function
+int main(void) {
+ // Define variables
+struct qb qback[QB_SIZE];
+struct rb rback[RB_SIZE];
+struct wr wreceiver[WR_SIZE];
+struct sc score[total];
+int scoresinorder[total];
+int qb_score[QB_SIZE]; // Scores for each position
+int rb_score[RB_SIZE];
+int wr_score[WR_SIZE];
+
+//Print welcome message
+print_welcome();
+// Fill the structures with information from text file
+fill_array_qb(qback);
+fill_array_rb(rback);
+fill_array_wr(wreceiver);
+
+// Calculate the scores for each position
+calculate_score_qb(qback, qb_score);
+calculate_score_rb(rback, rb_score);
+calculate_score_wr(wreceiver, wr_score);
+
+//Initialize score array
+int n;
+for(n=0;n<(total);n++){
+   scoresinorder[n]=n;
+}
+
+
+
+//Fill score array & Sort Scores
+fill_array_scores_qb(score,qb_score);
+fill_array_scores_rb(score,rb_score);
+fill_array_scores_wr(score, wr_score);
+sort_scores(score,scoresinorder);
+
+//Print winners
+print_winners(score, qback, rback, wreceiver, scoresinorder);
+
+
+return 0;
+}
+
+// Print welcome screen
+void print_welcome() {
+printf("##########################################################################\n#									 #\n# Heisman Trophy Predictor v1.0 by Iheanyi Ekechukwu and Waleed Mohammed #\n#									 #\n##########################################################################\n\n\n");
+printf("One moment, while we calculate the scores...\n\ns");
+usleep(4000000);
+printf("Done! Here are the results:\n\n");
+usleep(1000000);
+}
+
+// Fill quarterback array
+void fill_array_qb(struct qb* quarterback) {
+ int i = 0;
+ char line[SIZE];
+
+ FILE* qbPtr;
+
+ qbPtr = fopen("quarterbacks.txt", "r");
+
+ while(fgets(line, sizeof(line), qbPtr)) {
+  sscanf(line, "%s     %s %s  %s      %d      %d      %d      %d      %d	%d	%d	%d", quarterback[i].position, quarterback[i].name_first, quarterback[i].name_last, quarterback[i].school, &quarterback[i].yds_pass, &quarterback[i].tds_pass, &quarterback[i].intercepts, &quarterback[i].yds_rush, &quarterback[i].tds_rush, &quarterback[i].wins, &quarterback[i].losses, &quarterback[i].ranked_wins);
+  i++;
+ }
+}
+
+// Fill running back structure
+void fill_array_rb(struct rb* runningback) {
+ int i = 0;
+ char line[SIZE];
+
+ FILE* rbPtr;
+
+ rbPtr = fopen("runningbacks.txt", "r");
+
+ while(fgets(line,sizeof(line), rbPtr)) {
+ sscanf(line, "%s      %s %s  %s      %d      %d      %d      %d	%d	%d	%d", runningback[i].position, runningback[i].name_first, runningback[i].name_last, runningback[i].school, &runningback[i].yds_rush, &runningback[i].tds_rush, &runningback[i].yds_rec, &runningback[i].tds_rec, &runningback[i].wins, &runningback[i].losses, &runningback[i].ranked_wins);
+ i++;
+ }
+}
+
+// Fill wide receiver structure
+void fill_array_wr(struct wr* widereceiver) {
+ int i=0;
+ char line[SIZE];
+
+ FILE* wrPtr;
+
+ wrPtr=fopen("widereceivers.txt", "r");
+
+ while(fgets(line,sizeof(line), wrPtr)){
+  sscanf(line, "%s     %s %s  %s      %d      %d      %d      %d", widereceiver[i].position, widereceiver[i].name_first, widereceiver[i].name_last, widereceiver[i].school, &widereceiver[i].yds_rec, &widereceiver[i].tds_rec, &widereceiver[i].yds_rush, &widereceiver[i].tds_rush, &widereceiver[i].wins, &widereceiver[i].losses, &widereceiver[i].ranked_wins);
+  //printf("%s         %s %s  %s      %d      %d      %d      %d\n", widereceiver[i].position, widereceiver[i].name_first, widereceiver[i].name_last, widereceiver[i].school, widereceiver[i].yds_rec, widereceiver[i].tds_rec, widereceiver[i].yds_rush, widereceiver[i].tds_rush);
+  i++;
+ }
+}
+
+// Calculate score for each quarterback in the structure
+void calculate_score_qb(struct qb* quarterback, int* qb_score) {
+ int i;
+ int n;
+
+ for(i = 0; i < QB_SIZE; i++) {
+  n = 0;
+  n = (quarterback[i].yds_pass/25) + 4*(quarterback[i].tds_pass) - (quarterback[i].intercepts) + (quarterback[i].yds_rush/25) + 3*(quarterback[i].tds_rush) + 2*quarterback[i].wins - quarterback[i].losses + quarterback[i].wins*quarterback[i].ranked_wins;
+  qb_score[i] = n;
+ }
+
+}
+
+// Calculate score for each running back in the structure
+void calculate_score_rb(struct rb* runningback, int* rb_score) {
+ int i;
+ int n;
+
+ for( i = 0; i < RB_SIZE; i++) {
+ n = 0;
+ n = (runningback[i].yds_rush/10) + 6*(runningback[i].tds_rush) + (runningback[i].yds_rec/10) + 7*(runningback[i].tds_rec) + 2*runningback[i].wins - runningback[i].losses + runningback[i].wins*runningback[i].ranked_wins;
+ rb_score[i] = n;
+ }
+
+}
+
+// Calculate the score for each wide receiver in the structure
+void calculate_score_wr(struct wr* widereceiver, int* wr_score) {
+ int i;
+ int n;
+
+ for( i = 0; i < WR_SIZE; i++) {
+ n = 0;
+ n = (widereceiver[i].yds_rec/10) + 6*(widereceiver[i].tds_rec) + (widereceiver[i].yds_rush/10) + 6*(widereceiver[i].tds_rush) + 2*widereceiver[i].wins - widereceiver[i].losses + widereceiver[i].wins*widereceiver[i].ranked_wins;
+ wr_score[i] = n;
+ }
+
+}
+
+// Fill the first part of the score structure with quarterback scores
+void fill_array_scores_qb(struct sc* scores,int qb_score[QB_SIZE]){
+ int i;
+   for(i=0;i<QB_SIZE;i++){
+       scores[i].position=1;
+       scores[i].position_number=i;
+       scores[i].score=qb_score[i];
+   }
+}
+
+// Fill the second part of the score structure with running back scores
+void fill_array_scores_rb(struct sc* scores, int rb_score[RB_SIZE]){
+int i=QB_SIZE;
+int playernumber=0;
+   for(i=QB_SIZE;i<(QB_SIZE+RB_SIZE);i++){
+       scores[i].position=2;
+       scores[i].position_number=playernumber;
+       scores[i].score=rb_score[playernumber];
+       playernumber++;
+   }
+}
+
+// Fill the third part of the score structure with wide receiver scores
+void fill_array_scores_wr(struct sc* scores, int wr_score[WR_SIZE]){
+int i=QB_SIZE+RB_SIZE;
+int playernumber=0;
+   for(i=QB_SIZE+RB_SIZE;i<total;i++){
+       scores[i].position=3;
+       scores[i].position_number=playernumber;
+       scores[i].score=wr_score[playernumber];
+       playernumber++;
+   }
+}
+
+// Sort the scores in the score array using the bubble sort
+void sort_scores(struct sc* scores, int scoresinorder[total]){
+int i,j,b,c;
+for(i=0; i<(total-1);i++){
+   for(j=0;j<total-i;j++){
+       if(scores[scoresinorder[j]].score > scores[scoresinorder[j+1]].score){
+           b=scoresinorder[j];
+           c=scoresinorder[j+1];
+           scoresinorder[j]=c;
+           scoresinorder[j+1]=b;
+       }
+   }
+}
+}
+
+// Print the sorted score array out along with the stats of the players (top 100)
+void print_winners(struct sc* score, struct qb* qback, struct rb* rback, struct wr* wreceiver, int scoresinorder[total]) {
+ int n;
+ int i;
+
+ printf("Score  Position      First         Last           School  Rush Yds  Rush TDs Pass/Rec Yds Pass/Rec TDs Interceptions\n");
+ for (n=0;n<100;n++){
+   i = (total-1)-n;
+   if(score[scoresinorder[i]].position==1) {
+          printf("%5d %9s      %-13s %-16s %4s      %4d      %4d      %7d      %7d      %8d\n",score[scoresinorder[i]].score ,qback[score[scoresinorder[i]].position_number].position, qback[score[scoresinorder[i]].position_number].name_first, qback[score[scoresinorder[i]].position_number].name_last, qback[score[scoresinorder[i]].position_number].school, qback[score[scoresinorder[i]].position_number].yds_rush, qback[score[scoresinorder[i]].position_number].tds_rush, qback[score[scoresinorder[i]].position_number].yds_pass, qback[score[scoresinorder[i]].position_number].tds_pass, qback[score[scoresinorder[i]].position_number].intercepts);
+}
+   else if(score[scoresinorder[i]].position==2){
+          printf("%5d %9s      %-13s %-16s %4s      %4d      %4d      %7d      %7d      %8d\n",score[scoresinorder[i]].score, rback[score[scoresinorder[i]].position_number].position, rback[score[scoresinorder[i]].position_number].name_first, rback[score[scoresinorder[i]].position_number].name_last, rback[score[scoresinorder[i]].position_number].school, rback[score[scoresinorder[i]].position_number].yds_rush, rback[score[scoresinorder[i]].position_number].tds_rush, rback[score[scoresinorder[i]].position_number].yds_rec, rback[score[scoresinorder[i]].position_number].tds_rec, 0);
+}
+
+   else {
+         printf("%5d %9s      %-13s %-16s %4s      %4d      %4d      %7d      %7d      %8d\n",score[scoresinorder[i]].score ,wreceiver[score[scoresinorder[i]].position_number].position, wreceiver[score[scoresinorder[i]].position_number].name_first, wreceiver[score[scoresinorder[i]].position_number].name_last, wreceiver[score[scoresinorder[i]].position_number].school, wreceiver[score[scoresinorder[i]].position_number].yds_rush, wreceiver[score[scoresinorder[i]].position_number].tds_rush, wreceiver[score[scoresinorder[i]].position_number].yds_rec, wreceiver[score[scoresinorder[i]].position_number].tds_rec, 0);
+}
+}
+}

@@ -1,0 +1,1 @@
+/usr/bin/c++     -fPIC CMakeFiles/Sprite.dir/sprite.o  -o Sprite -rdynamic -lSDL -lpthread -lSDLmain 

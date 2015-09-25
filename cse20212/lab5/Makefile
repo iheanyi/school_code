@@ -1,0 +1,16 @@
+all: main Buttercup
+
+main:	main.o
+	g++ main.o -o main
+
+main.o:	main.cpp
+	g++ -c main.cpp
+
+Buttercup:	Buttercup.o
+	g++ Buttercup.o -o Buttercup
+Buttercup.o:	Buttercup.cpp
+	g++ -c Buttercup.cpp
+
+clean:
+	rm -f *.o main
+	rm -f *.o Buttercup

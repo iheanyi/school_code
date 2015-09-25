@@ -1,0 +1,1 @@
+sim-outorder -config sa1core.cfg /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/rijndael/rijndael.arm /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/rijndael/getty.encrypted.txt ./getty.decrypted_sa1.txt d 11110000111100001111000011110000

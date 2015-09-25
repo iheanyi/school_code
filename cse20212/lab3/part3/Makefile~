@@ -1,0 +1,23 @@
+all:	pmain
+
+main:	main.o BankAccount.o Savings.o BoatLoan.o
+	g++ main.o BankAccount.o Savings.o BoatLoan.o -o main
+main.o:	main.cpp
+	g++ -c main.cpp
+BankAccount.o:	BankAccount.cpp
+	g++ -c BankAccount.cpp
+Savings.o:	Savings.cpp
+	g++ -c Savings.cpp
+BoatLoan.o:	BoatLoan.cpp
+	g++ -c BoatLoan.cpp
+pmain: pmain.o Package.o TwoDayPackage.o OvernightPackage.o
+	g++ pmain.o Package.o TwoDayPackage.o OvernightPackage.o -o pmain
+Package.o:	Package.cpp
+	g++ -c Package.cpp
+TwoDayPackage.o:	TwoDayPackage.cpp
+	g++ -c TwoDayPackage.cpp
+OvernightPackage.o:	OvernightPackage.cpp
+	g++ -c OvernightPackage.cpp
+clean:
+	rm -f *.o main
+	rm -f *.o pmain

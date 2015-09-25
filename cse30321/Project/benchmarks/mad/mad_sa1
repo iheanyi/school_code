@@ -1,0 +1,1 @@
+sim-outorder -config sa1core.cfg /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/mad/madplay.arm /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/mad/victory_march.mp3 -o ./victory_march_sa1.wav

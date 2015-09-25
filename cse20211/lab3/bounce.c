@@ -1,0 +1,88 @@
+/* Bounce.c
+ *
+ * Animation of a shape moving around the screen at a constant velocity.
+ *
+ * Coded by Iheanyi Ekechukwu */
+
+#include <stdio.h>
+#include "gfx.h"
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(void) {
+
+// Declare variables
+
+int xsize; // Window size
+int ysize; 
+char input; // For mouse click
+float curxpos; // Tracking shape's position
+float curypos;
+double deltat; // Change in time
+float vx; // Velocity in x direction
+float vy; // Velocity in y direction
+
+// Define variables
+xsize = 400;
+ysize = 400;
+srand(time( NULL ));
+curxpos = (rand() % xsize);
+curypos = (rand() % ysize);
+vx = (rand() % 10);
+vy = (rand() % 10);
+deltat = 0.01;
+// Open new window for drawing
+gfx_open(xsize, ysize,"Bounce");
+
+// Draw and animate polygon 
+while (1) {
+  gfx_clear();
+gfx_color(255,0,0);
+gfx_line(curxpos,curypos,curxpos+20,curypos);
+gfx_line(curxpos+20,curypos,curxpos+10,curypos+10);
+gfx_line(curxpos+10,curypos+10,curxpos,curypos);
+
+// Bounce conditions
+ if ( curxpos + 20  >= xsize) {
+   vx = -vx;
+   } 
+
+ else if (curypos + 10 >= ysize) {
+   vy = -vy;
+ }
+
+ else if ( curxpos <= 0) {
+   vx = -vx;
+ }
+
+ else if (curypos <= 0) {
+   vy = -vy;
+ }
+
+
+ // See if user has input a key and respond accordingly.
+	char c = gfx_event_waiting();
+		if (c == 1) {
+		    input = gfx_wait();
+			if (input == 1) {
+				gfx_clear();
+				vx = (rand() % 10);
+				vy = (rand() % 10); 
+				curxpos = gfx_xpos();
+				curypos = gfx_ypos();
+				gfx_line(curxpos,curypos,curxpos+10,curypos);
+				gfx_line(curxpos+10,curypos,curxpos+20,curypos+20);
+				gfx_line(curxpos+20,curypos+20,curxpos,curypos);
+}
+			if (input == 'q') break; 
+}
+
+		else {
+		  curxpos = curxpos+vx;
+		  curypos = curypos+vy;
+		  gfx_flush();
+		  usleep(deltat*1000000);
+} 
+}
+return 0;
+}

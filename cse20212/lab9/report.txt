@@ -1,0 +1,31 @@
+			      Report for Lab 9 by Iheanyi Ekechukwu
+
+
+Distance traveled by the Notre Dame Football team in the Fall: 14312 miles
+
+The user uses the program by simplying running the program. The user can make a text file
+that has cities in the first row and in the first column, then the corresponding distances
+should be placed into the matrix relative to the column and row Cities. After which,
+the user modifies the code to incorporate the file by creating a new object, then can
+either run planTrip() to manually input the cities or FootballTravel() on the object to 
+calculate the total distance traveled to all cities, returning to the home city (which
+should be placed last in the file). Both planTrip() and FootballTravel() call roadTrip
+after they have filled the Choices matrix (which contains all the locations that will be
+traveled to) and roadTrip returns the integer sum of the distances traveled between the
+locations. 
+
+roadTrip uses the choices stored in the Choices vector to calculate distances by setting
+an initial sum equal to zero and incrementing this sum with the coordinates of the
+Choices vector of i and i+1 in the DistanceVector. So the DistanceVector calls Choices[i]
+and Choices[i+1], adding the distance at this location to the sum until it reaches the 
+second to last element, after which it stops and returns the total sum.
+
+The program was verified as running correctly by manually calculating each and every
+total distance by hand and comparing the end result to that which the program produces
+and in every tested case, the numbers matched together.
+
+In order to reduce the distance traveled to visit all the stadiums, one could potentially
+sort the Choices vector by distance between each stadium, making sure the shortest
+distance between two stadiums is always considered until they are sorted from lowest
+to highest, this should guarantee that the user travels the shortest total distance to all
+of the stadiums.

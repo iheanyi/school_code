@@ -1,0 +1,167 @@
+/* Symbol.c 
+
+Program will draw various shapes at the current mouse location depending on 
+which button or key  is pressed
+
+Coded by Iheanyi Ekechukwu */
+
+#include <stdio.h>
+#include "gfx.h"
+#include <math.h>
+
+int main( void ) {
+
+/* Declare variables */
+
+int xsize; /* Window size variables */
+int ysize;
+char input; /* Button input */
+float curx; // Current x position
+float cury; // Current y position
+float radius; // Radius for circle 
+float theta; // Value of  theta
+float newx; // New x
+float newy; // New y
+float oldx; // Old x value
+float oldy; // Old y value
+float PI; // Constant pi
+int sides; // Number of sides
+
+/* Open a new window for drawing */
+ xsize = 300;
+ ysize = 300;
+ gfx_open(xsize,ysize,"Symbols");
+
+/* Draw objects based on input and current location */
+
+while(1) {
+	
+	// Define variables
+	input = gfx_wait();
+	curx = gfx_xpos();
+	cury = gfx_ypos();
+	radius = 20;
+	oldx = curx + radius;
+	oldy = cury;
+	PI = 3.14159;
+	// Quit if it is letter q.
+	if(input=='q') break;
+
+	/* If mouse button pressed, draw blue square */
+	else if (input == 1) {
+		gfx_color(0,0,200); // Blue color
+		gfx_line(curx,cury,curx+20,cury);
+		gfx_line(curx+20,cury,curx+20,cury-20);
+		gfx_line(curx+20,cury-20,curx,cury-20);
+		gfx_line(curx,cury-20, curx,cury);
+	}
+
+	// If letter t is pressed, draw triangle
+	else if (input == 't') {
+		gfx_color(0,200,0); // Green
+		gfx_line(curx,cury,curx+20,cury);
+		gfx_line(curx+20,cury,curx+10,cury+10);
+		gfx_line(curx+10,cury+10,curx,cury);
+}
+
+	// If letter c is pressed, draw circle
+	else if (input == 'c') {
+		gfx_color(255,255,255); // White color
+		for (theta = 0; theta <= 2*PI; theta+=.01) {
+			newx = cos(theta)*radius+curx;
+			newy = sin(theta)*radius+cury;
+			gfx_line(oldx,oldy,newx,newy);
+			oldx = newx;
+			oldy = newy;
+}
+}
+
+	// If numbers 3-9 is pressed, draw that numebr sided polygon
+	// Three sides
+	else if (input == '3') {
+		gfx_color(128,0,128); // Purple color
+		sides = 3;
+		for (theta = 0; theta <=2*PI; theta+=2*PI/sides) {
+			newx = cos(theta)*radius+curx;
+			newy = sin(theta)*radius+cury;
+			gfx_line(oldx,oldy,newx,newy);
+			oldx = newx;
+			oldy = newy;
+}
+}
+	// Four sides
+	else if (input =='4') {
+	gfx_color(128,0,128);
+	sides = 4;
+	for (theta = 0; theta <= 2*PI; theta+=2*PI/sides) {
+			newx = cos(theta)*radius+curx;
+			newy = sin(theta)*radius+cury;
+			gfx_line(oldx,oldy,newx,newy);
+			oldx = newx;
+			oldy = newy;
+}
+}
+	// Five sides
+	else if (input == '5') {
+	gfx_color(128,0,128);
+	sides = 5;
+	for (theta = 0; theta <= 3*PI; theta+=2*PI/sides) {
+			newx = cos(theta)*radius+curx;
+			newy = sin(theta)*radius+cury;
+			gfx_line(oldx,oldy,newx,newy);
+			oldx = newx;
+			oldy = newy;
+}
+}
+
+	// Six sides
+	else if (input == '6') {
+	gfx_color(128,0,128);
+	sides = 6;
+	for (theta = 0; theta <= 4*PI; theta+=2*PI/sides) {
+			newx = cos(theta)*radius+curx;
+			newy = sin(theta)*radius+cury;
+			gfx_line(oldx,oldy,newx,newy);
+			oldx = newx;
+			oldy = newy; 
+}
+}
+	// Seven sides
+	else if (input == '7') {
+	gfx_color(128,0,128);
+	sides = 7;
+	for (theta = 0; theta <= 5*PI; theta +=2*PI/sides) {
+		newx = cos(theta)*radius+curx;
+		newy = sin(theta)*radius+cury;
+		gfx_line(oldx,oldy,newx,newy);
+		oldx = newx;
+		oldy = newy;
+}
+}
+	// Eight sides
+	else if (input == '8') {
+	gfx_color(128,0,128);
+	sides = 8;
+	for (theta = 0; theta <= 6*PI; theta += 2*PI/sides) {
+		newx = cos(theta)*radius+curx;
+		newy = sin(theta)*radius+cury;
+		gfx_line(oldx,oldy,newx,newy);
+		oldx = newx;
+		oldy = newy;
+}
+}
+	// Nine sides
+	else if (input == '9') {
+	gfx_color(128,0,128);
+	sides = 9; 
+	for (theta = 0; theta <= 7*PI; theta += 2*PI/sides) {
+		newx = cos(theta)*radius+curx;
+		newy = sin(theta)*radius+cury;
+		gfx_line(oldx,oldy,newx,newy);
+		oldx = newx;
+		oldy = newy;
+}
+}
+}
+return 0;
+}

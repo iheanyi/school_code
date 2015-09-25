@@ -1,0 +1,131 @@
+/* Rational.cpp
+
+Coded by Iheanyi Ekechukwu */
+
+#include <iostream>
+#include <iomanip>
+#include <math.h>
+#include "Rational.h"
+
+using namespace std;
+
+//Default constructor
+Rational::Rational() {
+  numerator = 1;
+  denominator = 1;
+}
+
+//Non-Default constructor
+Rational::Rational(int numer, int denom) {
+ if(denom == 0) {
+  cout << "Error! Cannot have 0 as denominator, setting denominator to 1!" << endl;
+  denom = 1; // Set denominator to 1
+ }
+ 
+ else {
+  int gcd = GCD(numer, denom);
+  numerator = numer/gcd; //Reduce numerator
+  denominator = denom/gcd; //Reduce denominator
+ }
+}
+
+//Print out rational number
+void Rational::print() const {
+  cout << setiosflags(ios::fixed);
+  float fraction = (float) numerator/denominator;
+  cout << setprecision(4);
+
+  cout << fraction << endl;
+}
+
+// Determining the GCD of a number
+int Rational::GCD(int a, int b) {
+  
+  while(1) {
+      if(b == 0) {
+	return a;
+      }
+      
+      else {
+	return GCD(b, a%b); //Recursion
+      }
+  }
+
+}
+
+//Overloaded output operator
+ostream &operator<<(ostream &out, const Rational &r) {  
+  out << r.numerator << "/" << r.denominator << endl;
+  return out;
+}
+
+//Overloaded addition operator
+Rational operator+( Rational &r1, Rational &r2) {
+  Rational reduce(r1.denominator, r2.denominator); //Make a reduced fraction of denominators, used for LCD
+  int result_numerator = (r1.numerator*reduce.denominator) + (r2.numerator*reduce.numerator);
+  int result_denominator = r1.denominator*reduce.denominator;
+  
+  return Rational(result_numerator, result_denominator);
+}
+
+//Overloaded subtraction operator
+Rational operator-( Rational &r1, Rational &r2) {
+  Rational reduce(r1.denominator, r2.denominator); //Make a reduced fraction of denominators, used for LCD
+  int result_numerator = (r1.numerator*reduce.denominator) - (r2.numerator*reduce.numerator);
+  int result_denominator = r1.denominator*reduce.denominator;
+  
+  return Rational(result_numerator, result_denominator);
+}
+
+//Overloaded multiplication operator
+Rational operator*(Rational &r1, Rational &r2) {
+ int result_numerator = r1.numerator * r2.numerator; // Multiply numerators
+ int result_denominator = r1.denominator * r2.denominator; //Multiply Denominators
+ 
+ return Rational(result_numerator, result_denominator);
+  
+}
+
+//Overloaded division operator
+Rational operator/(Rational &r1, Rational &r2) {
+ Rational flip(r2.denominator, r2.numerator); //Flip, second fraction (Keep, Change, Flip arithmetic)
+
+ return r1*flip; //Uses newly overloaded multiplication operator to calculate divisor
+}
+
+//Overloaded pre-fix increment
+Rational& Rational::operator++() {
+ numerator = numerator + denominator;
+ return *this;
+}
+
+//Overloaded post-fix increment
+Rational Rational::operator++(int) {
+  Rational num = *this;
+  ++(*this);
+  
+  return num;
+}
+
+//Overloaded modulo operator, used to calculate the inverse of a rational number
+Rational Rational::operator%(int) {
+ Rational num = *this;
+
+ numerator = num.denominator;
+ denominator = num.numerator;	
+return Rational(numerator, denominator);
+}
+
+//Overloaded carrot (^) oeprator, used to calculate the power of a rational number
+Rational Rational::operator^(int x) {
+ Rational num = *this;
+
+ int new_numerator = pow(num.numerator, x);
+ int new_denominator = pow(num.denominator, x);
+
+ return Rational(new_numerator, new_denominator);
+}
+
+
+
+

@@ -1,0 +1,20 @@
+/* Klondike Simulator 
+
+*/
+
+#include <iostream>
+#include "CardDeck.h"
+
+using namespace std;
+
+int main(void) {
+srand(time(NULL));
+CardDeck Klondike;
+
+
+Klondike.printBoard();
+Klondike.solve();
+Klondike.printBoard();
+
+return 0;
+}

@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #666666;
+}
+
+#content {
+    width: 450px;
+    margin: 10px auto;
+    padding: 5px 20px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+h1 {
+    font-size: 175%;
+}
+
+label {
+    display: block;
+    width: 10em;
+    text-align: right;
+    padding-right: 1em;
+    float: left;
+}
+
+input {
+    display: block;
+    float: left;
+}
+
+#area, #perimeter {
+    color: #000000;
+}
+
+br {
+    clear: left;
+}

@@ -1,0 +1,6 @@
+EKECHUKWU TRAVEL AGENCY: Your Itinerary!
+
+Origin	Destination	Departure	Arrival 	Price
+ATL	ORD		15:31		13:44		$240
+SBN	MSP		7:55		6:46		$393
+								$343

@@ -1,0 +1,57 @@
+/* palindrome.cpp
+
+
+Coded by Iheanyi Ekechukwu
+*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <list>
+
+using namespace std;
+
+int main() {
+  vector<int> v1;
+  vector<int> v2;
+  vector<int> v1Reverse;
+  vector<int> v2Reverse;
+  vector<int>::const_reverse_iterator r;
+
+
+  int firstAssign[] = {1, 2, 1};
+  int secondAssign[] = {1, 2, 3};
+ 
+  v1.assign(firstAssign, firstAssign+3);
+  v2.assign(secondAssign,secondAssign+3);
+  
+  for(r = v1.rbegin(); r != v1.rend(); ++r) {
+  v1Reverse.push_back(*r);
+  }
+  
+  
+  for(r = v2.rbegin(); r != v2.rend(); ++r) {
+  v2Reverse.push_back(*r); 
+  }
+  
+  
+  if(v1 == v1Reverse) {
+   cout << "Vector 1 is a palindrome!" << endl;
+   
+  }
+  else {
+     cout << "Vector 1 is not a palindrome!" << endl;
+     
+   }
+   
+   if(v2 == v2Reverse) {
+    cout << "Vector 2 is a palindrome!" << endl;
+    
+   }
+      
+   else {
+	
+   cout << "Vector 2 is not a palindrome!" << endl;
+   }
+ return 0; 
+}

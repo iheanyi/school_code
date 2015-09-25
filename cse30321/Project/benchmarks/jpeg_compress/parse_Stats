@@ -1,0 +1,16 @@
+
+grep -i sim_CPI *.txt
+grep -i sim_IPC *.txt
+grep -i sim_num_insn *.txt
+grep -i sim_num_loads *.txt
+grep -i sim_num_stores *.txt
+grep -i sim_num_branches *.txt
+grep -i 'dl1.accesses' *.txt
+grep -i 'dl1.hits' *.txt
+grep -i 'dl1.misses' *.txt
+grep -i 'dl1.miss_rate' *.txt
+grep -i 'il1.accesses' *.txt
+grep -i 'il1.hits' *.txt
+grep -i 'il1.misses' *.txt
+grep -i 'il1.miss_rate' *.txt
+

@@ -1,0 +1,1 @@
+sim-outorder -config sa1core.cfg /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/jpeg/cjpeg.arm /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/jpeg/nd_lake.ppm > nd_lake_sa1.jpg

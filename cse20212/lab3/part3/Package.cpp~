@@ -1,0 +1,79 @@
+/* Package.cpp
+
+*/
+
+#include <iostream>
+#include <string>
+#include "Package.h"
+
+using namespace std;
+
+Package::Package() {
+  weight = 16; //16 oz minimum
+  
+  // Flat rate unit cost
+  unit_cost = 0.11; // Per ounce
+  
+  send_name = "Iheanyi Ekechukwu";
+  send_address = "126 Stanford Hall";
+  send_city = "Notre Dame";
+  send_state = "IN";
+  send_zip = "46556";
+  
+  rec_name = "Peter Ekechukwu";
+  rec_address = "612 Woodbine Ct";
+  rec_city = "Myrtle Beach";
+  rec_state = "SC";
+  rec_zip = "29579";
+  
+}
+
+string Package::getSendName() const {
+ return send_name; 
+}
+
+string Package::getRecName() const {
+ return rec_name; 
+}
+
+double Package::getUnitCost() const {
+  return unit_cost;
+}
+
+double Package::getTotalCost() const {
+  return total_cost;
+}
+
+double Package::getWeight() const {
+ return weight; 
+}
+    
+
+
+double Package::CalculateCost() {
+ total_cost = unit_cost*weight;
+ 
+ return total_cost;
+}
+
+void Package::printLabel() {
+ cout << "Sender Information: " << endl;
+ 
+ cout << send_name << endl;
+ cout << send_address << endl;
+ cout << send_city << ", " << send_state << " " << send_zip << endl;
+ 
+ cout << endl;
+ 
+ cout << "Recipient Information: " << endl;
+ 
+ cout << rec_name << endl;
+ cout << rec_address << endl;
+ cout << rec_city << ", " << rec_state << " " << rec_zip << endl;
+ 
+ cout << endl;
+}
+
+
+
+

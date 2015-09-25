@@ -1,0 +1,231 @@
+// Taylor Seale, Iheanyi Ekechukwu, Ryan Shea, Andrew Caron
+// Fundamentals of Computing II: Final Project
+// main.cpp driver file
+
+#include "sprite.h"
+#include "timer.h"
+#include "background.h"
+#include "SDL/SDL.h"
+#include "SDL/SDL_mixer.h"
+#include "gameFuncs.h"
+#include "otter.h"
+#include "missile.h"
+#include "coin.h"
+#include "fish.h"
+#include "scoreCounter.h"
+#include "menuScreen.h"
+#include <math.h>
+#include <stdlib.h>
+#include <iostream>
+
+int main(int argc, char* args[]){
+    //Quit flag
+    bool quit = false;
+
+    //Initialize
+    if(init() == false){
+        return 1;
+    }
+
+    //set score variables
+    int score = 0;
+    scoreCounter scoreCount("numbers.bmp",255,255,255);
+
+    //set obstacle
+    srand(time(NULL));
+    vector<Sprite*> obstacles;
+    int action;
+    int collider;
+    int obstacleScore = 0;
+    double obstacleTimer = 0;
+    double obstacleSpawnRate=0;
+    double obstacleAmplitude=50.0;
+    double obstacleIntercept=50.0;
+	double invincibleCheck = 0.0;
+    bool expertMode = false;
+
+
+    //The frame rate regulator
+    Timer fps;
+
+    //The otter
+    Otter otter("otter.bmp",255,255,255);
+
+    //The background
+    Background background("background.bmp",screen);
+
+	Menu menu("menuScreens.bmp",255,0,255);
+	
+	int start = 0;
+    // THE MUSIC
+    Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 );
+    Mix_Music* music;
+    music = Mix_LoadMUS("swag.wav");
+	if(Mix_PlayingMusic() == 0) {	
+    Mix_PlayMusic(music, -1);
+
+}
+    //While the user hasn't quit
+    while(quit == false){
+        //Start the frame timer
+
+	   while(start==0){
+			Timer mps;
+			mps.start();
+	            //Handle events for the stick figure
+				while(SDL_PollEvent(&event)){
+	            	start = menu.handle_event(event);
+				}
+				background.scroll(10,screen);
+				menu.show(screen);
+				SDL_Flip(screen);
+				SDL_Flip(menu.sprite);
+				if(mps.get_ticks() < 1000 / FRAMES_PER_SECOND){
+			     SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - mps.get_ticks() );
+		        }
+				if (score > 0){
+					score = 0;
+					otter.setIsVisible(true);
+				}
+	    }
+	
+	
+		fps.start();
+		
+        //While there's events to handle
+        while(SDL_PollEvent(&event)){
+            //Handle events for the stick figure
+            otter.handle_events(event);
+
+            //If the user has Xed out the window
+            if(event.type == SDL_QUIT){
+                //Quit the program
+                quit = true;
+            }
+        }
+
+	if(expertMode){obstacleSpawnRate = 25*sin(obstacleTimer) + 375;}
+	else{
+	  obstacleSpawnRate = obstacleAmplitude*(sin(obstacleTimer)) + obstacleIntercept;
+	  if(obstacleSpawnRate > 400){expertMode = true;}
+	  if(score > obstacleScore + 1000){
+	    obstacleAmplitude=50;
+	    obstacleIntercept+=15;
+	    obstacleScore = score;
+	  }	
+	  obstacleAmplitude -= .1;
+	}
+	obstacleTimer += .1;
+	
+	int spawnObstacle = rand()%1000 + 1;   //randomly create missles
+	if (spawnObstacle < obstacleSpawnRate){
+	  int randY = (rand()%10)*25 + 50;//random height
+	  Missile *temp = new Missile("missiles.bmp",127,127,127,randY);
+	  obstacles.push_back(temp);
+	}
+
+	int spawnCoin = rand()%1000 + 1;
+	if (spawnCoin < 50){
+	  int randX = rand()%400 + 100;     //random x
+	  Coin *money = new Coin("coins.bmp",48,120,128,randX);
+	  obstacles.push_back(money);
+	}
+
+	int spawnFish = rand()%1000 + 1;
+	if(spawnFish < 5){
+	  int fRandY = (rand()%10)*25 + 50;
+	  Fish *food = new Fish("LoveFish.bmp",85,109,143,fRandY);
+	  obstacles.push_back(food);
+	}
+
+        //Move the stick figure
+	bool collide;
+	otter.move();
+	for(int i=0;i<obstacles.size();i++){
+	 	collide = false;
+		collide = otter.check_collision(obstacles.at(i));
+		if(collide){
+			action=0;
+			action=obstacles.at(i)->collision();
+			if (action==2){ //coin
+			  score += 100;
+			  //cout << score << endl;
+			}
+			if (action==1){ //missle
+			  if(otter.getStatus()!=3){
+			    otter.setIsVisible(false);
+			    collider = i;
+				start=0;
+			    break;
+			  }else{
+			    score += 200;
+			  }
+
+			}
+			if (action==3){ //fish
+				otter.setInvincible(1);
+				invincibleCheck=0;
+			}
+		}
+		obstacles.at(i)->move();
+	}
+
+	if(otter.getStatus()==3)
+	{
+		//cout << endl << fps.get_ticks();
+		if(invincibleCheck==0) invincibleCheck=score+2000;
+		else
+		{
+			if(score>=invincibleCheck)
+			{
+				otter.setInvincible(0);
+			}
+		}
+	}
+	
+	//increment score
+	score += 7;
+	scoreCount.setScore(score);
+
+	
+        //Show the otter on the screen and scroll the background
+	background.scroll(10,screen);
+       	otter.show(screen);
+	scoreCount.show(screen);
+	for(int i=0;i<obstacles.size();i++){obstacles.at(i)->show(screen);}
+	
+        //Update the screen
+        SDL_Flip(screen);
+	SDL_Flip(otter.sprite);	
+	for(int i=0;i<obstacles.size();i++){SDL_Flip(obstacles.at(i)->sprite);}
+	SDL_Flip(scoreCount.sprite);
+	
+	//Cap the frame rate
+        if(fps.get_ticks() < 1000 / FRAMES_PER_SECOND){
+	  SDL_Delay( ( 1000 / FRAMES_PER_SECOND ) - fps.get_ticks() );
+	}
+	
+	//free obstacles as they exit
+	for(int i=0;i<obstacles.size();i++){
+	  if(obstacles.at(i)->getOffSetX() < -50){
+	    delete obstacles.at(i);
+	    obstacles.erase(obstacles.begin()+i);
+	  }
+	}
+    }
+
+    if(action==1){
+      for(int i=0;i<12;i++){
+        usleep(10000);
+	obstacles.at(collider)->show(screen);
+	SDL_Flip(screen);
+	SDL_Flip(obstacles.at(collider)->sprite);
+      }
+    }
+    usleep(100000);
+    //Clean up
+    Mix_FreeMusic(music);
+    SDL_Quit();
+    
+    return 0;
+}

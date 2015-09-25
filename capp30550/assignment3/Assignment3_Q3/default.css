@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #666666;
+}
+
+#content {
+    width: 600px;
+    margin: 10px auto;
+    padding: 5px 20px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+h1 {
+    text-align: center;
+}
+label {
+    display: block;
+    width: 15em;
+    text-align: right;
+    padding-right: 1em;
+    float: left;
+}
+input {
+    display: block;
+    width: 15em;
+	float: left;
+}
+br {
+    clear: left;
+}
+
+#calculate {
+    width: 6em;
+    margin-left: 1em;
+}
+.disabled {
+    color: #000000;
+}

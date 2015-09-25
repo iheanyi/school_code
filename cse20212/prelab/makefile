@@ -1,0 +1,16 @@
+all:	main pi
+
+main: main.o mortgage.o
+	g++ main.o mortgage.o -o main
+
+main.o:	main.cpp
+	g++ -c main.cpp
+mortgage.o:	mortgage.cpp
+		g++ -c mortgage.cpp
+
+pi:	pi.o
+	g++ pi.o -o pi
+pi.o:	pi.cpp
+	g++ -c pi.cpp
+clean:	
+	rm -f *.o main

@@ -1,0 +1,74 @@
+/* drawshapes.c
+
+Purpose of this program is to store the files used to draw shapes for symbols.c
+
+Coded by Iheanyi Ekechukwu */
+
+#include <stdio.h>
+#include <math.h>
+#include "gfx.h"
+
+// Function prototype for circle drawing
+void drawcircle( float xcir, float ycir, float rcir) {
+ 	for (float theta = 0; theta <= 2*3.14159; theta+=.01) {
+	float  newx = cos(theta)*rcir+xcir;
+	float  newy = sin(theta)*rcir+ycir;
+	gfx_line(float oldx, float oldy,newx,newy);
+	 float oldx = newx;
+	 float oldy = newy;
+}
+
+// Function prototype for hexagon drawing
+void drawhexagon( int xhex, float yhex, float rhex) {
+for (float theta = 0; theta <= 4*3.14159; theta+=2*3.14159/6) {
+	 float  newx = cos(theta)*rhex+xhex;
+	 float  newy = sin(theta)*rhex+xhex;
+	 gfx_line(oldx,oldy,newx,newy);
+	 float  oldx = newx;
+	 float  oldy = newy; 
+	}
+}
+
+int main( void ) {
+  int xsize = 300;
+  int ysize = 300;
+  char input;
+  float curx;
+  float cury;
+  float theta;
+  int radius;
+  float newx;
+  float newy;
+  float oldx;
+  float oldy;
+  float PI = 3.14159; // Constant PI
+
+  xsize = 300;
+  ysize = 300;
+
+  // Open a new window for drawing
+  gfx_open(xsize,ysize,"Symbols");
+
+  while(1){
+    input = gfx_wait();
+    curx = gfx_xpos();
+    cury = gfx_ypos();
+    radius = 10;
+    oldx = curx + radius;
+    oldy = cury + radius;
+
+    // Quit if letter q;
+    if (input == 'q') break;
+
+    // If h is pressed, draw hexagon
+    if (input == 'h') {
+    drawhexagon(curx, cury, radius);
+    }
+    // If c is pressed, draw circle
+    if (input == 'c') {
+    drawcircle(curx, cury, radius);
+}
+}
+  return 0;
+}
+}

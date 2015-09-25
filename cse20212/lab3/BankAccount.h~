@@ -1,0 +1,50 @@
+/* BankAccount.h 
+
+Iheanyi Ekechukwu */
+#include <iostream>
+#ifndef BANKACCOUNT_H
+#define BANKACCOUNT_H
+
+using namespace std;
+
+class BankAccount {
+  public:
+    BankAccount();
+    void print();
+    void setLoot();
+  protected:
+    int balance;	// Current Balance
+    int loot;
+    string FName; // First name
+    string LName; // Last name
+    int AccountNum;	//Account Number
+};
+
+class BoatLoan: public BankAccount {
+  public:
+    BoatLoan(); //Default Constructor
+    void print();
+  protected:
+    int maxLootStorage;
+    int numOfCannons;
+    int numOfMonths; 
+};
+
+
+class Checking: public BankAccount {
+  public:
+   Checking();
+   void print();
+  protected:
+};
+
+class Savings: public BankAccount {
+  public:
+    Savings();
+    void print();
+  protected:
+    int balance;
+    int interest_rate;
+    
+};
+#endif

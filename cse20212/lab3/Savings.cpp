@@ -1,0 +1,18 @@
+/* Savings.cpp
+
+*/
+#include <iostream>
+#include <string>
+#include "BankAccount.h"
+#include "Savings.h"
+
+using namespace std;
+
+Savings::Savings() : BankAccount() {
+ balance = 5;
+}
+
+void Savings::print() {
+ cout << FName << ", you currently have $" << balance << " in your savings account!" << endl;
+ 
+}

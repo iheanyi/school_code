@@ -1,0 +1,24 @@
+/* Puzzle.h
+
+Coded by Iheanyi Ekechukwu*/
+
+#include <iostream>
+#include <fstream>
+#include <vector>
+#ifndef PUZZLE_H
+#define PUZZLE_H
+
+using namespace std;
+
+class Puzzle {
+  public:
+    Puzzle(char*);
+    void solve();
+    bool checkDone();
+    void printFinal();
+  private:
+    vector< vector<int> > PuzzleVector;
+    vector < vector< vector<int> > > PossNum; //possible numbers
+};
+
+#endif

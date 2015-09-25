@@ -1,0 +1,23 @@
+/* BoatLoan.cpp
+
+*/
+#include "BankAccount.h"
+#include "BoatLoan.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+BoatLoan::BoatLoan() : BankAccount() {
+maxLootStorage = 5000;
+numOfCannons = 5;
+numOfMonths = 12;
+}
+
+void BoatLoan::print() {
+ cout << "Hello Mr. " << LName << "!" << endl;
+ 
+ cout << "On your current boat, you have a maximum of " << maxLootStorage << " sq. ft!" << endl;
+ 
+ cout << "You still have " << numOfMonths << " months to pay off your loan as well!" << endl;
+}

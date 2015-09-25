@@ -1,0 +1,3 @@
+				Report for Lab 4
+
+The program works from the user's perspective just by having the user run the program and they watch the program until they designate for it to terminate (end). The program works internally by just changing the axes of motion over a period of time, due to velocity or the change of theta over a period of time and then flushing the graphics to the window. There is no true way to verify that the output of this program works, so I am leaving it up to the TAs to determine that the output is correct though it seems to be. 

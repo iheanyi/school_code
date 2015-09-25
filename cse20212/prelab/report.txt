@@ -1,0 +1,7 @@
+					PreLab Report for Iheanyi Ekechukwu
+
+In this lab, we made a program to estimate the value of pi using a series. The series starts off by starting off
+at 4 and then with each subsequent term, the program adds to pi by adding -1^(term number)/(n), with the number
+n increasing by 2 each time so that it's denominators remain as odd numbers. I verified the correctness of the 
+output of the program by double checking the example used in the lab document and also manually calculating
+the estimate myself using a calculator, and the output of the program was correct. 

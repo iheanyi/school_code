@@ -1,0 +1,52 @@
+			  Report for Heisman Trophy Predictor
+			by Iheanyi Ekechukwu and Waleed Mohammed
+
+The Heisman Trophy Predictor, coded by Iheanyi Ekechukwu and Waleed Mohammed, is made for football fans to have an idea of 
+who will be in the top rankings of the coveted Heisman Trophy. The program only takes into account the quarterback, running
+backs, wide receivers, and tight ends from the six automatically qualifying conferences (SEC, ACC, PAC-12, Big 10, Big 12, and
+Big East) along with Notre Dame. From the user perspective, the user can modify each text file with the stats of each
+respective player and their position. There is a separate text file each for quarterbacks, running backs, and wide receivers.
+One thing the user should be wary of, is modifying the number of players in the text file. If the user changes the number of
+players in the text file, they should make sure that they reflect this change in the constants defined in the code. As far as
+the user's perspective coming into play, the rest of the work is done by the program itself. Internally, the scores are
+calculated by an algorithm based off of the Yahoo! Fantasy Sports League formula 
+(help.yahoo.com/l/us/yahoo/sports/fantasysports/football/rulesfrules-08.htm/). The formula was modified dependent on the 
+position and their role within the offense, along with the amounts of wins, losses, and ranked wins being taken into 
+account as well. All of this data is stored in array, named after each respective position and its players from the 
+text file. The algorithm to be observed can be found in the calculate_score function, respective to each position. After 
+they are calculated, the scores are then sorted by using a bubble sort method (Discrete Math and its Applications by Kenneth 
+Rosen, pg. 197), and then stored within a structure of their own. In this structure, the data is stored so that it can refer
+back to the original position of the respective player, the score structure is arranged in a way so that the position of the
+player in question can be stored, the location of that player within that specific structure, and the score which the player
+held. When it comes to printing out the information in the score structure, it is easy to pull all of the data from the score
+structure and then display it on the screen to the user. When the program is run, the user is greeted by a welcome screen
+and the program is given a moment to calculate all the scores before it displays the final sorted scores. 
+
+For the seperate algorithms, here is how each is calculated (actual code):
+For quarterbacks:   (quarterback[i].yds_pass/25) + 4*(quarterback[i].tds_pass) - 
+(quarterback[i].intercepts) + (quarterback[i].yds_rush/25) + 3*(quarterback[i].tds_rush) + 
+2*quarterback[i].wins - quarterback[i].losses + quarterback[i].wins*quarterback[i].ranked_wins
+
+
+For running backs: (runningback[i].yds_rush/10) + 6*(runningback[i].tds_rush) + 
+(runningback[i].yds_rec/10) + 7*(runningback[i].tds_rec) + 2*runningback[i].wins - 
+runningback[i].losses + runningback[i].wins*runningback[i].ranked_wins
+
+
+For wide receivers: (widereceiver[i].yds_rec/10) + 6*(widereceiver[i].tds_rec) + (widereceiver[i].yds_rush/10) + 
+6*(widereceiver[i].tds_rush) + 2*widereceiver[i].wins - 
+widereceiver[i].losses + widereceiver[i].wins*widereceiver[i].ranked_wins
+
+Information on fumbles could not be found for players on the formatted sheets that were acquired online, therefore we did not
+take them into account within our program. Also, quarterbacks are penalized for each interception thrown. Running backs receive
+more points than wide receivers for receiving touchdowns, since they are less common. Also, quarterbacks do not receive as
+many points for their rushing touchdowns since it skewed the results with players such as Denard Robinson who run the ball
+more than they throw. After all the scores have been calculated and sorted, we made sure that the output of the program is
+correct by cross checking the first player in the score structure with the player's respective position. Also, we checked the
+algorithm scores of three players by hand and compared them to the program's calculated results, in which case they matched.
+Lastly, after the algorithm was finalized, we compared our top 5 players with reputable sources, such as ESPN.com, and the top
+5 players were similar, the only discrepancy being Case Keenum, who is not taken into account because he is not in an
+automatically qualifying conference. Errors may be produced in the program when the user modifies the length of the text file
+and does not change the defined constants within the program itself, such as the size of the structure and therefore this 
+would cause an error within the program and should be avoided. Other than that, there are no other known situations in which
+an error will arise. Also, the stats are accurate as of Friday, December 2nd at 12:21 AM.

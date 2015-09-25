@@ -1,0 +1,14 @@
+/* TwoDayPackage.h
+
+*/
+#include <iostream>
+#include "Package.h"
+
+using namespace std;
+
+class TwoDayPackage: public Package {
+  public:
+    TwoDayPackage();
+    double flat_fee;
+    double CalculateCost();
+};

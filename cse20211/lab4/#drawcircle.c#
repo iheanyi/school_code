@@ -1,0 +1,9 @@
+/* Drawcircle.c
+
+   Function for drawing a circle */
+
+#include <stdio.h>
+#include <math.h>
+#include "gfx.h"
+
+int drawcircle(

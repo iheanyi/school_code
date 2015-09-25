@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">	
+<title>Temperature Converter</title>
+<link rel="stylesheet" type="text/css" href="default.css" />
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script type="text/javascript" src="convert_temp.js"></script>
+</head>
+<body>
+    <div id="content">
+        <h1>Convert temperature</h1>
+        
+        <input type="radio" name="conversion_type" id="to_celcius" checked="checked" />From Fahrenheit to Celcius<br />
+        <input type="radio" name="conversion_type" id="to_fahrenheit" />From Celcius to Fahrenheit<br />
+        <br />
+
+        <label>Degrees Fahrenheit:</label>
+        <input type="text" id="degrees_fahrenheit" class="disabled" /><br />
+        <label>Degrees Celcius:</label>
+        <input type="text" id="degrees_celcius" disabled="disabled" class="disabled"/><br />
+        <br />
+        
+        <input type="button" id="convert" value="Convert" /><br />
+        <br />        
+    </div>
+</body>
+</html>

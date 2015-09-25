@@ -1,0 +1,27 @@
+				    Report for Lab 4 by Iheanyi Ekechuwku
+
+In this lab, we made a palindrome program, a Card Deck object,a monkey sort program, and also a Blackjack game. In this report,
+I will be explaining how the Monkey Sort program works, since that contains the value which I am reporting. The user uses the
+program by typing in the command "./monkey", no input has to be made from the user at all, as it is all in the program. After
+the program is run by typing in the command, the program itself works internally by checking to see if the card array is inOrder
+by using the member function. The member function literally marches through every single number within the deck to see if the
+numbers are in increasing order, if not, the monkey sort shuffles the deck again and sorts through the numbers again, a highly
+inefficient method. In order to demonstrate the inefficiency of the monkey sort, the following are the values reported for 
+the monkey sort program being run three times.
+
+Number of Shuffles to order 7 cards: 4678
+Number of Shuffles to order 8 cards: 581977
+Number of Shuffles to order 9 cards: 2673865
+
+Number of Shuffles to order 7 cards: 8865
+Number of Shuffles to order 8 cards: 138066
+Number of Shuffles to order 9 cards: 3520852
+
+Number of Shuffles to order 7 cards: 27054
+Number of Shuffles to order 8 cards: 103960
+Number of Shuffles to order 9 cards: 1918639
+
+As the number of cards within the deck increases, the number of the shuffles increases exponentially! The program was verified
+for correctness by just gauging the outputted numbers from the program and they seemed to be correct, due to the number of 
+permutations of sorting a deck of 'X' cards being equal to X! (X factorial). Thus, the output of the program seems to be
+consistent with the number of cards in the deck, increasing by a factor of 10 each time, which makes sense.

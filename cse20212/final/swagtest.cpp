@@ -1,0 +1,22 @@
+#include "SDL/SDL.h"
+#include "SDL/SDL_mixer.h"
+#include "SDL/SDL_image.h"
+
+//The music that will be played
+
+int main(int argc, char* args[]) {
+  SDL_Surface* screen = NULL;
+  Mix_Music *music = NULL;
+
+  while(1) {
+    //Set up the screen
+    screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE );
+    
+    //Set the window caption
+    SDL_WM_SetCaption( "Monitor Music", NULL );
+    
+    music = Mix_LoadMUS( "swag.wav" );
+
+    Mix_PlayMusic( music, -1 );
+  }
+  }

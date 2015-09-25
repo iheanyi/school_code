@@ -1,0 +1,16 @@
+				  Report for Lab 5 by Iheanyi Ekechuwku
+
+Within the program Buttercup, the end user does not have to do anything but input
+the number of suitors. After doing so, the program will loop through the circular
+list, counting every three elements and then deleting them from the list until
+there is only one spot left open for Wesley to stand on. As of 1:20 PM on Friday,
+the Buttercup program stopped working and I am still trying to debug what the 
+problem could be, so I cannot verify that the output is correct.
+
+In terms of data hiding, we hid the deque that was used in the Buttercup structure
+and basically used the STL to our advantage due to the functions that are prseent
+within the STL itself, making it easy to dynamically remove elements from the 
+container rather than having to worry about an array and deleting elements that
+way. Using an STL container provides multiple advantages over using an array,
+simply due to the feasibility of the functions that are present within the STL
+container itself.

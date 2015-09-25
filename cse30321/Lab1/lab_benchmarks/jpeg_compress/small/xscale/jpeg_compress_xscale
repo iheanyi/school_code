@@ -1,0 +1,1 @@
+sim-outorder -config xscale.cfg /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/jpeg/cjpeg.arm /afs/nd.edu/coursefa.12/cse/cse30321.01/Labs/mibench/jpeg/input_small.ppm > output_small_xscale.jpg

@@ -1,0 +1,19 @@
+Iheanyi Ekechukwu			
+			
+			Report for Lab 1
+In terms of using Program 3 created by myself, individuals can use
+it to calculate their Basal Metabolic Rate. By searching for more
+information on Basal Metabolic Rate through Google, there exists a 
+chart that maps out how much activity one has to do to burn the most
+calories while working out and this can assist with others that are
+trying to cut back on their weight. The program is structured towards
+men, though later versions may make it possible for women to 
+calculate their Basal Metabolic Rate as well. I made the program as 
+user friendly as possible, and it asks for the input in an orderly
+fashion. In terms of correctness, the program makes sure that no
+negative numbers or zero  can be entered for calculation reasons.
+It produces correct results, the only case where it produces 
+incorrect resulsts is when a string is entered in place of a number.
+The program is not programmed to correctly examine strings and there
+is no method (to my knowledge) on how to prevent character input
+in the program. 

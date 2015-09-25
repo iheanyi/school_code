@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  	<title>Monthly Balance Calculator</title>
+    <link rel="stylesheet" type="text/css" href="default.css" />
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type="text/javascript" src="string_library.js"></script>
+    <script type="text/javascript" src="monthly_balance_library.js"></script>
+    <script type="text/javascript" src="monthly_balance.js"></script>
+</head>
+
+<body>
+<div id="content">
+    <h1>Monthly Balance Calculator</h1>
+    <h2>Add Transaction</h2>
+    <div class="formLayout">
+        <label>Date:</label>
+        <input type="text" id="trans_date" value="12/31/2009" /><br />
+        
+        <label>Type:</label>
+        <select id="trans_type">
+            <option value="deposit">Deposit</option>
+            <option value="withdrawal">Withdrawal</option>
+		</select><br />
+        
+        <label>Amount:</label>
+        <input type="text" id="trans_amount" value="100" /><br />
+
+        <label>&nbsp;</label>
+        <input type="button" id="add_trans" value="Add Transaction" /><br />
+    </div>
+
+    <h2>Transactions</h2>
+    <p>
+        <textarea id="trans_list" rows="7" cols="60"></textarea>
+    </p>
+
+    <h2>Summary</h2>
+    <div class="formLayout">
+        <label>Starting Balance:</label>
+        <input type="text" id="starting_balance" class="disabled" disabled="disabled" /><br />
+
+        <label>Total Deposits:</label>
+        <input type="text" id="total_deposits" class="disabled" disabled="disabled" /><br />
+
+        <label>Total Withdrawals:</label>
+        <input type="text" id="total_withdrawals" class="disabled" disabled="disabled" /><br />
+        
+        <label>Ending Balance:</label>
+        <input type="text" id="ending_balance" class="disabled" disabled="disabled" /><br />
+    </div>
+</body>
+</html>

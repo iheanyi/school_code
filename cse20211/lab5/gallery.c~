@@ -1,0 +1,88 @@
+/* Gallery.c
+
+This program is designed to display a gallery of fractal art.
+
+Coded by Iheanyi Ekechukwu */ 
+
+#include <stdlib.h>
+#include "gfx.h"
+#include <stdio.h>
+#include <math.h>
+#include <time.h>
+
+const float pi = 3.14159;
+
+// Function prototypes
+void draw_flake(int xcen, int ycen,  int r, int arms);
+void fractal_flake(int x1, int y1, float r, int arms);
+
+
+// Main loop
+int main (void) {
+  // Seed random number
+  srand( time ( NULL )); 
+  // Define variables
+  int xsize = 800;
+  int ysize = 800;
+  char input;
+  int xcenter = xsize/2;
+  int ycenter = ysize/2;
+  int radius;
+  int arms;
+
+  // Open window for drawing
+  gfx_open(xsize, ysize, "Gallery");
+
+  // While loop for drawing
+  while(1) {
+    input = gfx_wait();
+
+    // Input of q, quit program
+    if (input == 'q') break;
+
+    // With each click, display random snowflake
+    if (input == 1) {
+      gfx_clear();
+      radius = xsize/(3 +(rand() % 10));
+      arms = (5+rand()%3);
+      fractal_flake(xcenter, ycenter, radius, arms);
+    }
+  }
+  return 0; 
+}
+
+// Custom functions
+void draw_flake(int xcen, int ycen, int r, int arms) {
+  float theta;
+  float newx, newy;
+  gfx_color(1+(rand()%255), 1+(rand()%255), 1+(rand()%255)); 
+  for(theta = 0; theta <= (arms-2)*pi; theta += 2*pi/(arms)) {
+    newx = xcen+r*sin(theta);
+    newy = ycen+r*cos(theta);
+    gfx_line(xcen,ycen,newx,newy);
+  }
+
+  /* gfx_line(xcen, ycen, xcen+r*(sin(2*pi/5)), ycen+r*(cos(2*pi/5)));
+  gfx_line(xcen, ycen, xcen+r*(sin(4*pi/5)), ycen+r*(cos(4*pi/5)));
+  gfx_line(xcen, ycen, xcen+r*(sin(6*pi/5)), ycen+r*(cos(6*pi/5)));
+  gfx_line(xcen, ycen, xcen+r*(sin(8*pi/5)), ycen+r*(cos(8*pi/5)));
+  gfx_line(xcen, ycen, xcen+r*(sin(10*pi/5)), ycen+r*(cos(10*pi/5)));*/
+
+}
+
+void fractal_flake(int x1, int y1, float r, int arms) {
+  // base case
+  if (r < 1) return; 
+
+  // Draw flake
+  draw_flake(x1, y1, r, arms);
+
+  // Recursive Functions
+  fractal_flake(x1-r*sin(2*pi/arms), y1+r*cos(2*pi/arms), r/3, arms);
+  fractal_flake(x1+r*sin(2*pi/arms), y1+r*cos(2*pi/arms), r/3, arms);
+  fractal_flake(x1, y1+r, r/3, arms);
+  fractal_flake(x1+r*sin(4*pi/arms), y1+r*cos(4*pi/arms), r/3, arms);
+  fractal_flake(x1-r*sin(4*pi/arms), y1+r*cos(4*pi/arms), r/3, arms);
+  fractal_flake(x1+r*sin(6*pi/arms), y1+r*cos(6*pi/arms), r/3, arms);
+  fractal_flake(x1-r*sin(6*pi/arms), y1+r*cos(6*pi/arms), r/3, arms);
+}

@@ -1,0 +1,26 @@
+Project ( Sprite )
+
+set (
+   SOURCES
+   sprite.cpp
+)
+
+Find_Package ( SDL REQUIRED )
+#Find_Package ( SDL_image REQUIRED )
+
+if ( NOT SDL_FOUND )
+   message ( FATAL_ERROR "SDL not found!" )
+endif ( NOT SDL_FOUND )
+
+link_libraries (
+   ${SDL_LIBRARY}
+   #${SDLIMAGE_LIBRARY}
+   SDLmain
+)
+
+add_executable (
+   Sprite
+   WIN32
+   MACOSX_BUNDLE
+   ${SOURCES}
+)

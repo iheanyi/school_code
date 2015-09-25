@@ -1,0 +1,6 @@
+	Myrtle_Beach	San_Francisco	South_Bend	Miami	Atlanta
+Myrtle_Beach	0	2436	683	551	316
+San_Francisco	2436	0	1929	2591	2138
+South_Bend	683	1929	0	1152	558
+Miami	551	2591	1152	0	604
+Atlanta	316	2138	558	604	0

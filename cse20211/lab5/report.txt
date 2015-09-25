@@ -1,0 +1,11 @@
+				Report for Lab 5
+
+With the Gallery.c program, the program is made for the user to
+keep on clicking on the graphics window to display a new snowflake with each
+click until the user decides to quit the program. Internally, the program is 
+generating random arm numbers from 5 to 7, any higher than 7 arms caused 
+problems when drawing the arms for numbers less than itself. Also, the
+program generates a random color for each new drawing and a random size, no 
+larger than the size of the entire graphics window. I verified the program 
+works by going through numerous clicks (over 50) and all of the outputs were
+correct. 

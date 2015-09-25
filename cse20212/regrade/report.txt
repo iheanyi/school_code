@@ -1,0 +1,25 @@
+					  Report for Lab 2
+
+With this lab, we mainly used operator overloading to create a Rational fraction calculator. The user uses this program 
+by first entering the numerator and denominator of the two rational numbers that they want to perform the operations on.
+Then, the program calls the overloaded operator functions to create and display the calculations of the two numbers and
+the respective value. Also, further down the program, the user can modify the "main.cpp" file and use the overloaded "^"
+operator to determine the power of a rational fraction. The program works internally with the addition and subtraction
+operators by creating a reduced fraction of the two rational numbers, with the first being on top and second being on
+bottom. The first fraction's numerator is then multiplied by the reduced fraction's denominators and the second fraction
+is multiplied by the reduced fraction's numerator. These two values are then added/subtracted together and the denominator
+of the number is the denominator of the first times the denominator of the reduced, or the denominator of the second 
+times the numerator of the reduced, the result will be the same. The program then returns the Rational constructor of
+the resulting numerator and resulting denominator and that is the addition or the subtraction rational number.The
+multiplication of two rational fractions is done simply by multiplying the two numerators together and the two
+denominators together and creating a new Rational object using these resulting numerators/denominators. The division
+function uses the Keep, Change, Flip method to calculate the division of the two fractions, keeping the first fraction
+the same, then multiplying it by the inverse of the second fraction and returning that as a new Rational object. With
+this lab, the modulo operator is used to calculate the inverse of the inputted function by storing the numerator and
+denominator in a temporary object, then interchanging the two values into new_numerator and new_denominator variables and
+creating a new Rational object from those variables, thus being the inverse of the rational fraction. The power (^) 
+operator works by creating a copy of the passed in object, then creating new variables of the numerator and denominator
+and setting their value equal to the value of the power of the numerator and the denominator, raised to whatever number
+is to the right of the ^ symbol and returning these numerators and denominators into a new Rational object. Output of the
+program was verified as correct by manually calculating the values of rational fractions and comparing them to the values
+outputted by the program, and they matched with one another.

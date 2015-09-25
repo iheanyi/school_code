@@ -1,0 +1,12 @@
+all: main
+
+main:	main.o Puzzle.o
+	g++ main.o Puzzle.o -o main
+
+Puzzle.o: Puzzle.cpp
+	g++ -c Puzzle.cpp
+
+main.o:	main.cpp
+	g++ -c main.cpp
+clean:
+	rm -f *.o main

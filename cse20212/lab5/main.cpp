@@ -1,0 +1,31 @@
+/* main.cpp
+
+*/
+
+#include <iostream>
+#include <deque>
+#include <vector>
+#include "cdl_list.h"
+
+using namespace std;
+
+int main() {
+cdl_list<int> myList;
+
+//Insert test values
+myList.insertFromFront(100);
+myList.insertFromFront(150);
+myList.insertFromFront(175);
+myList.insertFromBack(200);
+myList.print();
+myList.reset();
+cout << myList.currentValue() << endl;
+myList++;
+cout << myList.currentValue() << endl;
+myList--;
+myList.next();
+myList--;
+cout << myList.currentValue() << endl;
+
+return 0;
+}

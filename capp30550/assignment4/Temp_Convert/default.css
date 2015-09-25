@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #666666;
+}
+
+#content {
+    width: 450px;
+    margin: 10px auto;
+    padding: 5px 20px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+h1 {
+    font-size: 140%;
+}
+
+label {
+    display: block;
+    width: 10em;
+    padding-right: 1em;
+    float: left;
+}
+
+input, label {
+    display: block;
+    float: left;
+}
+
+.disabled {
+    color: #000000;
+}
+
+br {
+    clear: left;
+}

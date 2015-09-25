@@ -1,0 +1,4 @@
+heisman: heisman.c
+	gcc travel.c -o travel
+clean:
+	rm -f heisman

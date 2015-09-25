@@ -1,0 +1,30 @@
+all: palindrome main monkey Blackjack
+
+palindrome:	palindrome.o
+	g++ palindrome.o -o palindrome
+
+palindrome.o:	palindrome.cpp
+	g++ -c palindrome.cpp
+
+main:	main.o CardDeck.o
+	g++ main.o CardDeck.o -o main
+main.o:	main.cpp
+	g++ -c main.cpp
+
+monkey:	monkey.o CardDeck.o
+	g++ monkey.o CardDeck.o -o monkey
+monkey.o:	monkey.cpp
+	g++ -c monkey.cpp
+
+Blackjack: Blackjack.o CardDeck.o
+	g++ Blackjack.o CardDeck.o -o Blackjack
+Blackjack.o:	Blackjack.cpp
+	g++ -c Blackjack.cpp
+CardDeck.o:	CardDeck.cpp
+	g++ -c CardDeck.cpp
+
+clean:
+	rm -f *.o palindrome
+	rm -f *.o main
+	rm -f *.o monkey
+	rm -f *.o Blackjack

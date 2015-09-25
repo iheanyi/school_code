@@ -1,0 +1,62 @@
+/* Rational.cpp
+
+Coded by Iheanyi Ekechukwu */
+
+#include <iostream>
+#include "Rational.h"
+
+using namespace std;
+
+
+Rational::Rational() {
+numerator = 1;
+denominator = 1;
+}
+
+Rational::Rational(int numer, int denom) {
+ if(denom == 0) {
+  cout << "Error! Cannot have 0 as denominator, setting denominator to 1!" << endl;
+  denom = 1;
+ }
+ 
+ else {
+  int gcd = GCD();
+  
+  numer = numer/gcd;
+  denom = denom/gcd;
+ }
+}
+
+void Rational::print() {
+  
+  cout << numerator/denominator << endl;
+}
+
+int Rational::GCD() {
+  int i = 0;
+  int GCD = 0;
+  
+ 
+  if(numerator > denominator) {
+    for(i = 1; GCD < denominator; i++) {
+      if(denominator % i == 0) {
+	GCD = i;
+	cout << "GCD is" << GCD << endl;
+      }
+    }
+  }
+  
+  else if(denominator > numerator) {
+    for(i = 1; i < denominator; i++) {
+      if(numerator % 1== 0) {
+	GCD = i; 
+	cout << "GCD is" << GCD << endl;
+      }
+    }
+  }
+  
+  return GCD;
+}
+
+
+

@@ -1,0 +1,8 @@
+					Lab 2 Report by Iheanyi Ekechukwu
+
+From the user's perspective, the program simply works by running the designated program and it graphs
+the pre-defined function for the user to see. The program can be modified internally to graph other
+functions if needed, which any programmer can modify internally. I verified the output of this program 
+to be correct by comparing the graph of my function to the graph displayed on a graphing calculator
+ and they were similar figures, although different scales and different methods of display made the 
+results differ in slight but obvious ways.

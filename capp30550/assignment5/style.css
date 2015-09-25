@@ -1,0 +1,17 @@
+﻿body {  font-family:Arial, Sans-Serif; font-size:medium; color:Black
+}
+
+h1 { font-family:Arial, Sans-Serif; font-size:200%; color:Green}
+
+hr {border: thick double #808080;
+    width:100%;
+    height:10px;
+    color:Gray;
+    background-color: #808080;
+    }
+
+.gray {background-color:Gray;}
+.red{background-color:Red;}
+.green{background-color:Green;}
+.yellow{background-color:Yellow;}
+.blue{background-color:Blue;}

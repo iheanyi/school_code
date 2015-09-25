@@ -1,0 +1,8 @@
+A:0,1
+
+set(['1', '0'])
+['q1', 'q2', 'q3', 'q4']
+defaultdict(<function <lambda> at 0x1004d7398>, {'q1': defaultdict(<type 'list'>, {'1': ['q2', 'q1'], '0': ['q1']}), 'q3': defaultdict(<type 'list'>, {'1': ['q4']}), 'q2': defaultdict(<type 'list'>, {'0': ['q3'], 'e': ['q3']}), 'q4': defaultdict(<type 'list'>, {'1': ['q4'], '0': ['q4']})})
+set(['q4'])
+q1
+Begin tape input:

@@ -1,0 +1,13 @@
+					  Report for Lab 9 by Iheanyi Ekechukwu
+
+In this project, we built a travel agent program to help a user plan out their flights in an easy manner.
+In this program, the user has to just enter their starting airport code, SBN, DEN, ATL, DTW, etc., and then
+choose a valid flight from the list of flights presented to them. All of the information is laid out to the user
+and printed to an external text file by the name of "itinerary.txt". After each flight choice, the user is
+prompted to make sure that they want to keep the flight they just made or cancel, or ending the planning and 
+just printing out the itinerary. From the programming perspective, the user's choice in flights is stored into
+an array named itinerary. When printing the information, the program grabs the information from a structure
+named "flight" and outputs this into the "itinerary.txt" file. The program's functions makes the code easy to read
+and understand, thus allowing any outside eyes to check the program easily. I verified the output of the program
+is correct by testing it myself and checking how the data is outputted to the final text document. Also,
+I tested all functions to make sure that the program works as it should. 

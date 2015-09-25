@@ -1,0 +1,26 @@
+A:a,b
+
+set(['a', 'b'])
+['q1', 'q2', 'q3', 'q4', 'q5', 'q6']
+defaultdict(<function <lambda> at 0x1004d6398>, {'q1': defaultdict(<type 'list'>, {'e': ['q2', 'q3']}), 'q3': defaultdict(<type 'list'>, {'a': ['q6']}), 'q2': defaultdict(<type 'list'>, {'a': ['q4']}), 'q4': defaultdict(<type 'list'>, {'a': ['q5'], 'b': ['q4'], 'e': ['q1']}), 'q6': defaultdict(<type 'list'>, {'a': ['q3'], 'b': ['q3']})})
+set(['q3', 'q5'])
+q1
+Begin tape input:
+[('a', 'b', 'a'), ('a', 'a', 'b', 'b'), ('b',)]
+; q1,q3,q2
+a; q1,q3,q2,q4,q6
+b; q1,q3,q2,q4
+a; q1,q3,q2,q5,q4,q6
+ACCEPT
+
+; q1,q3,q2
+a; q1,q3,q2,q4,q6
+a; q1,q3,q2,q5,q4,q6
+b; q1,q3,q2,q4
+b; q1,q3,q2,q4
+ACCEPT
+
+; q1,q3,q2
+b; 
+REJECT
+

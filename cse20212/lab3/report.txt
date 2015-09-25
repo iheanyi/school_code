@@ -1,0 +1,16 @@
+					      Report for Lab 3  by Iheanyi Ekechukwu
+
+
+In this program, to make the base class abstract, you have to use virtual functions
+
+In order to have an abstract class, you have to have one pure virtual function. You only want to make functions pure virtual
+that your derived classes should overwrite. In order to make a pure virtual function/abstract base class, this is simple 
+enough to do without there being many complications, but then when you use composition rather than inheritance, that is 
+where one runs into problems.
+
+With this lab, this program works mainly by the program doing all the work in terms of values, the user just has to run the 
+program and the code handles the rest. Using objects within and derived classes in Part 1 & 2, the program runs quite smoothly.
+With Part 3, the output is the same but within the program itself, composition is used rather than inheritance, which makes the
+program more weird in terms of running and more code is involved. I verified the output of the program is correct by calculating
+the variables such as total_cost by hand and making sure there were no errors while compiling and everything compiled
+correctly. 

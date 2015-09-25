@@ -1,0 +1,8 @@
+			      Report for Lab 1 by Iheanyi Ekechukwu
+
+
+With this program, I did not get t ofinish the rest of the program. So far, the program does not
+display the board correctly and it also does not work in filling the columns up. I did not have the
+chance to program a winner either, therefore the output of the program is not correct. Using a get
+function for the maxDiscs ensures that it is constant therefore it will not mess up. Deconstructors
+are needed because then the program will not seg fault due to the memory overload.

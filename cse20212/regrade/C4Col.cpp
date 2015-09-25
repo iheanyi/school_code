@@ -1,0 +1,76 @@
+/* C4Col.cpp
+
+Coded by Iheanyi Ekechukwu
+*/
+
+#include <iostream>
+#include "C4Col.h"
+
+using namespace std;
+
+//Simple constructor
+C4Col::C4Col() {
+  int row;
+  current_discs = 0;
+  max_discs = 7;
+  
+  for(row = 0; row < max_discs; row++) {
+    players[row] = ' ';
+  }
+  
+}
+
+C4Col::C4Col(int max) {
+ int row;
+ current_discs = 0;
+ max_discs = 7;
+ 
+ for(row = 0; row < max_discs; row++) {
+  players[row] = ' '; 
+ }
+ 
+}
+
+int C4Col::isFull() {
+  if (current_discs == max_discs) {
+   return 1;
+  }
+  
+  return 0;
+}
+
+char C4Col::getDisc(int current) const {
+   /*
+  if(current > max_discs) {
+   cout << "Invalid parameter in getDisc!" << endl; 
+  }*/
+   
+   //cout << "Current is" << current << "players is" << players[current] << endl;
+  
+    return players[current];
+}
+
+int C4Col::getMaxDiscs() const {
+  return max_discs;
+}
+
+void C4Col::addDisc(char player) {
+  if(isFull() == 1) {
+   cout << "Current column is full!" << endl;
+  }
+  
+  else {
+    players[current_discs++] = player;
+  }
+  
+}
+
+int C4Col::getCurrentDisc() const {
+  return current_discs;
+}
+
+C4Col C4Col::operator+=(char player) {
+  addDisc(player);
+  
+  return (*this);
+}

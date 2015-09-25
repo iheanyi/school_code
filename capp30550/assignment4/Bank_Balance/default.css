@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #666666;
+}
+
+#content {
+    width: 500px;
+    margin: 10px auto;
+    padding: 5px 20px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+h2 {
+    border-bottom: 2px solid black;
+}
+
+#trans_list {
+    text-align: left;
+}
+.center { text-align: center; }
+
+.formLayout label {
+    float: left;
+    width: 10em;
+    text-align: right;
+}
+
+.formLayout input, .formLayout select {
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.formLayout br {
+    clear: both;
+}
+
+input.disabled {
+    color: black;
+    background-color: white;
+    border: 1px solid #7F9DBB;
+    text-align: right;
+}

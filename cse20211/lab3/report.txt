@@ -1,0 +1,9 @@
+					Report for Lab 3
+
+The final part of the assignment is a simple rolling wheel demonstration. Although basic,
+the user can modify the speed of the wheel by clicking the left mouse button and slow down
+the wheel by using the right mouse button. The wheel will go no further than the wall and 
+it will bounce back if it does collide with the wall. In order to show the rotational motion,
+the spokes within the wheel rotate when the velocity is not equal to zero. The program does
+work as seen by running the program and there is no other method of verifying that the
+program works other than by running the program and watching how it performs. 

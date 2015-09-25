@@ -1,0 +1,34 @@
+/* Main.cpp
+
+Program for testing the CardDeck program
+
+Coded by Iheanyi Ekechukwu */
+
+#include <iostream>
+#include <algorithm>
+#include <deque>
+#include <cstdlib>
+#include <ctime>
+#include "CardDeck.h"
+
+using namespace std;
+
+int main() {
+  CardDeck myDeck(10);
+  srand((time (NULL)));
+  
+  cout << "Deck before shuffling: " << endl;
+  
+  myDeck.printDeck();
+  
+  cout << endl;
+  cout << endl;
+  
+  myDeck.shuffle();
+  
+  cout << "Deck after shuffling: " << endl;
+  
+  myDeck.printDeck();
+  
+return 0;
+}
